@@ -370,3 +370,27 @@ yay -S wine-gecko wine-mono
 sudo pacman -S waydroid
 sudo waydroid init
 systemctl enable --now waydroid-container.service
+
+sudo pacman -S networkmanager networkmanager-openvpn openvpn
+sudo systemctl enable --now NetworkManager
+
+sudo pacman -S wireguard-tools
+
+# Install yay first if not present
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Then install sing-box
+yay -S sing-box
+
+yay -S clash-meta
+
+export http_proxy="http://127.0.0.1:7890"
+export https_proxy="http://127.0.0.1:7890"
+export all_proxy="socks5://127.0.0.1:1080"
+
+yay -S tor-browser
+
+
